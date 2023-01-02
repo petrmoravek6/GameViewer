@@ -17,11 +17,11 @@ namespace clientUI.Model
 
     public static class AgeLimitYears
     {
-        public static int ToYears(AgeLimit ageLimit)
+        public static double ToYears(AgeLimit ageLimit)
         {
             return limits[ageLimit];
         }
-        private static Dictionary<AgeLimit, int> limits = new()
+        private static Dictionary<AgeLimit, double> limits = new()
         {
             {AgeLimit.Kids, 7 },
             {AgeLimit.Pupils, 12 },
