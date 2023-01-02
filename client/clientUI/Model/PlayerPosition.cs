@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace clientUI.Model
 {
-    internal class PlayerPosition
+    public enum PlayerPosition
     {
+        Goalkeeper,
+        Defender,
+        Midfielder,
+        Attacker,
+        Unknown
     }
 }

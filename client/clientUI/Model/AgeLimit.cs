@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace clientUI.Model
 {
-    internal class Class1
+    public enum AgeLimit
     {
+        Kids,
+        Pupils,
+        U18,
+        U21,
+        Senior
     }
 }

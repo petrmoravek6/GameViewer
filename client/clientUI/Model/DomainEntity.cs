@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace clientUI.Model
 {
-    internal class Class1
+    public interface DomainEntity<ID>
     {
+        ID getId();
+        void setId(ID id);
     }
 }
