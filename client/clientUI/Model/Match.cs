@@ -10,8 +10,9 @@ public class Match : DomainEntity<long?>
     public Team homeTeam;
     public Team awayTeam;
     private readonly PlayerService playerService;
+    public readonly List<long> participantsIds;
 
-    public readonly ISet<Player> participants
+    public readonly List<Player> participants
     {
         get
         {
@@ -19,7 +20,7 @@ public class Match : DomainEntity<long?>
         }
     }
 
-    public Match(long? id, int homeTeamScore, int awayTeamScore, AgeLimit ageLimit, DateTime dateOfTheMatch, Team homeTeam, Team awayTeam, PlayerService playerService)
+    public Match(long? id, int homeTeamScore, int awayTeamScore, AgeLimit ageLimit, DateTime dateOfTheMatch, Team homeTeam, Team awayTeam, PlayerService playerService, List<long> participantsIds)
     {
         this.id = id;
         this.homeTeamScore = homeTeamScore;
@@ -29,6 +30,7 @@ public class Match : DomainEntity<long?>
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.playerService = playerService;
+        this.participantsIds = participantsIds;
     }
 
     public long? getId()

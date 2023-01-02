@@ -19,6 +19,20 @@ namespace clientUI.ServerApi.Model
         public long awayTeam;
         public List<long> participants;
 
+        public MatchDto(long? id, int homeTeamScore, int awayTeamScore, string ageLimit, int day, int month, int year, long homeTeam, long awayTeam, List<long> participants)
+        {
+            this.id = id;
+            this.homeTeamScore = homeTeamScore;
+            this.awayTeamScore = awayTeamScore;
+            this.ageLimit = ageLimit;
+            this.day = day;
+            this.month = month;
+            this.year = year;
+            this.homeTeam = homeTeam;
+            this.awayTeam = awayTeam;
+            this.participants = participants;
+        }
+
         public long? getId()
         {
             return id;

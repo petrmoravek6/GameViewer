@@ -18,10 +18,11 @@ namespace clientUI.Model
          * The team which the player plays in.
          */
         public Team team;
+        private readonly List<int> matchesPlayedIds;
         /**
          * The matches that the player participates in.
          */
-        public readonly ISet<Match> matchesPlayed
+        public readonly List<Match> matchesPlayed
         {
             get 
             {
@@ -30,7 +31,7 @@ namespace clientUI.Model
         }
         private readonly MatchService matchService;
 
-        public Player(long? id, string name, DateTime dateOfBirth, PlayerPosition position, Team team, MatchService matchService)
+        public Player(long? id, string name, DateTime dateOfBirth, PlayerPosition position, Team team, MatchService matchService, List<int> matchesPlayedIds)
         {
             this.id = id;
             this.name = name;
@@ -38,6 +39,7 @@ namespace clientUI.Model
             this.position = position;
             this.team = team;
             this.matchService = matchService;
+            this.matchesPlayedIds = matchesPlayedIds;
         }
 
         public long? getId()
