@@ -12,6 +12,11 @@ namespace clientUI.Services
     {
         protected readonly CrudRequester<ID, TYPE, DTO> requester;
 
+        public CrudService(CrudRequester<ID, TYPE, DTO> requester)
+        {
+            this.requester = requester;
+        }
+
         public TYPE Read(ID id)
         {
             if (id is null)

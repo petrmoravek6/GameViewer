@@ -12,7 +12,7 @@ using static System.Resources.ResXFileRef;
 
 namespace clientUI.ServerApi
 {
-    internal class PlayerRequester : CrudRequester<long?, Player, PlayerDto>
+    public class PlayerRequester : CrudRequester<long?, Player, PlayerDto>
     {
         private readonly IConverter<Team, TeamDto> teamConverter;
 

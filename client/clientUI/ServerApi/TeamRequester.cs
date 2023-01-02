@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace clientUI.ServerApi
 {
-    internal class TeamRequester : CrudRequester<long?, Team, TeamDto>
+    public class TeamRequester : CrudRequester<long?, Team, TeamDto>
     {
         public TeamRequester(string basePath, string parameter, IConverter<Team, TeamDto> converter) : base(basePath, parameter, converter)
         {
