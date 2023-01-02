@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace clientUI.Model
 {
-    internal class Class1
+    internal class Team
     {
     }
 }

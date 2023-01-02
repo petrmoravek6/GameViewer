@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace clientUI.Model
+namespace clientUI.ServerApi.Model
 {
     internal class Class1
     {
