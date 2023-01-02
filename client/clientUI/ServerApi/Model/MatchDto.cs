@@ -1,4 +1,5 @@
 ﻿using clientUI.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace clientUI.ServerApi.Model
 {
     public class MatchDto : DomainEntity<long?> {
+        [JsonProperty]
         private long? id;
         public int homeTeamScore;
         public int awayTeamScore;

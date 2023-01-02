@@ -18,28 +18,14 @@ namespace clientUI.Model
          * The team which the player plays in.
          */
         public Team team;
-        private readonly List<int> matchesPlayedIds;
-        /**
-         * The matches that the player participates in.
-         */
-        public readonly List<Match> matchesPlayed
-        {
-            get 
-            {
-                return matchesPlayed;
-            }
-        }
-        private readonly MatchService matchService;
 
-        public Player(long? id, string name, DateTime dateOfBirth, PlayerPosition position, Team team, MatchService matchService, List<int> matchesPlayedIds)
+        public Player(long? id, string name, DateTime dateOfBirth, PlayerPosition position, Team team)
         {
             this.id = id;
             this.name = name;
             this.dateOfBirth = dateOfBirth;
             this.position = position;
             this.team = team;
-            this.matchService = matchService;
-            this.matchesPlayedIds = matchesPlayedIds;
         }
 
         public long? getId()
