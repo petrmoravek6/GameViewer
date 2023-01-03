@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(451, 336);
             this.Controls.Add(this.logger);
             this.Controls.Add(this.exit_button);
@@ -124,7 +124,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.title);
             this.Controls.Add(this.name_textBox);
-            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "AddTeamForm";
             this.Text = "Add new team";

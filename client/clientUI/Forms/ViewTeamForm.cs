@@ -23,6 +23,10 @@ namespace clientUI.Forms
             this.team = team;
             InitializeComponent();
             save_button.Enabled = false;
+            name_textBox.Text = team.name;
+            shortname_textBox.Text = team.shortname;
+            name_textBox.Enabled = false;
+            shortname_textBox.Enabled = false;
         }
 
         private void save_button_Click(object sender, EventArgs e)
@@ -39,11 +43,13 @@ namespace clientUI.Forms
             }
             try
             {
-                var team = new Team(team.getId(), name_textBox.Text, shortname_textBox.Text);
-                teamService.Update(team);
+                var newTeam = new Team(team.getId(), name_textBox.Text, shortname_textBox.Text);
+                teamService.Update(newTeam);
                 logger.Text = "Updated succesfully";
                 save_button.Enabled = false;
                 button1.Enabled = true;
+                name_textBox.Enabled = false;
+                shortname_textBox.Enabled = false;
             }
             catch(Exception ex)
             {
@@ -60,6 +66,8 @@ namespace clientUI.Forms
         {
             save_button.Enabled = true;
             button1.Enabled = false;
+            name_textBox.Enabled = true;
+            shortname_textBox.Enabled = true;
         }
     }
 }

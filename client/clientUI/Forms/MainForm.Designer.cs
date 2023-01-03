@@ -37,6 +37,7 @@ partial class MainForm
             this.remove_button = new System.Windows.Forms.Button();
             this.add_button = new System.Windows.Forms.Button();
             this.exit_button = new System.Windows.Forms.Button();
+            this.logger = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // team_button
@@ -49,6 +50,7 @@ partial class MainForm
             this.team_button.TabIndex = 0;
             this.team_button.Text = "TEAMS";
             this.team_button.UseVisualStyleBackColor = true;
+            this.team_button.Click += new System.EventHandler(this.team_button_Click);
             // 
             // player_button
             // 
@@ -60,6 +62,7 @@ partial class MainForm
             this.player_button.TabIndex = 1;
             this.player_button.Text = "PLAYERS";
             this.player_button.UseVisualStyleBackColor = false;
+            this.player_button.Click += new System.EventHandler(this.player_button_Click);
             // 
             // match_button
             // 
@@ -71,15 +74,16 @@ partial class MainForm
             this.match_button.TabIndex = 2;
             this.match_button.Text = "MATCHES";
             this.match_button.UseVisualStyleBackColor = false;
+            this.match_button.Click += new System.EventHandler(this.match_button_Click);
             // 
             // mainList
             // 
-            this.mainList.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.mainList.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.mainList.FormattingEnabled = true;
-            this.mainList.ItemHeight = 17;
+            this.mainList.ItemHeight = 21;
             this.mainList.Location = new System.Drawing.Point(12, 48);
             this.mainList.Name = "mainList";
-            this.mainList.Size = new System.Drawing.Size(552, 616);
+            this.mainList.Size = new System.Drawing.Size(552, 613);
             this.mainList.TabIndex = 3;
             // 
             // display_button
@@ -93,6 +97,7 @@ partial class MainForm
             this.display_button.TabIndex = 4;
             this.display_button.Text = "Display";
             this.display_button.UseVisualStyleBackColor = false;
+            this.display_button.Click += new System.EventHandler(this.display_button_Click);
             // 
             // remove_button
             // 
@@ -105,6 +110,7 @@ partial class MainForm
             this.remove_button.TabIndex = 5;
             this.remove_button.Text = "Remove";
             this.remove_button.UseVisualStyleBackColor = false;
+            this.remove_button.Click += new System.EventHandler(this.remove_button_Click);
             // 
             // add_button
             // 
@@ -117,6 +123,7 @@ partial class MainForm
             this.add_button.TabIndex = 6;
             this.add_button.Text = "Add";
             this.add_button.UseVisualStyleBackColor = false;
+            this.add_button.Click += new System.EventHandler(this.add_button_Click);
             // 
             // exit_button
             // 
@@ -131,12 +138,22 @@ partial class MainForm
             this.exit_button.UseVisualStyleBackColor = false;
             this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
             // 
+            // logger
+            // 
+            this.logger.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.logger.Location = new System.Drawing.Point(12, 669);
+            this.logger.Name = "logger";
+            this.logger.Size = new System.Drawing.Size(862, 39);
+            this.logger.TabIndex = 8;
+            this.logger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(886, 684);
+            this.ClientSize = new System.Drawing.Size(886, 714);
+            this.Controls.Add(this.logger);
             this.Controls.Add(this.exit_button);
             this.Controls.Add(this.add_button);
             this.Controls.Add(this.remove_button);
@@ -161,4 +178,5 @@ partial class MainForm
     private Button remove_button;
     private Button add_button;
     private Button exit_button;
+    private Label logger;
 }
