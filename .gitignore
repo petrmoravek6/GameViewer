@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/client/clientUI/obj
+/client/.idea/.idea.client/.idea
+/client/.vs
+/client/clientUI/bin/Debug/net7.0-windows
+/server/game_viewer/.docker/postgres-data

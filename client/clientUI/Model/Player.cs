@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace clientUI.Model
 {
-    public class Player : DomainEntity<long?>
+    public class Player : GameModel<long?>
     {
         private long? id;
         public string name;
@@ -47,6 +47,11 @@ namespace clientUI.Model
         public override int GetHashCode()
         {
             return HashCode.Combine(id);
+        }
+
+        public T apply<T>(Visitor<T> visitor)
+        {
+            return visitor.VisitPlayer(this);
         }
     }
 }

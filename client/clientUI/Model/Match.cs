@@ -1,6 +1,6 @@
 ﻿namespace clientUI.Model;
 
-public class Match : DomainEntity<long?>
+public class Match : GameModel<long?>
 {
     private long? id;
     public int homeTeamScore;
@@ -42,5 +42,10 @@ public class Match : DomainEntity<long?>
     public override int GetHashCode()
     {
         return HashCode.Combine(id);
+    }
+
+    public T apply<T>(Visitor<T> visitor)
+    {
+        return visitor.VisitMatch(this);
     }
 }

@@ -37,6 +37,7 @@ static class Program
         MatchService matchService= new(matchRequester);
 
         teamService.Create(new Team(null, "asd", "as"));
+        var x = teamService.ReadAll();
 
         Application.Run(new MainForm());
     }

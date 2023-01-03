@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace clientUI.Services
 {
-    public class CrudService<ID, TYPE, DTO> where TYPE : DomainEntity<ID>
+    public class CrudService<ID, TYPE, DTO> where TYPE : GameModel<ID>
     {
         protected readonly CrudRequester<ID, TYPE, DTO> requester;
 

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace clientUI.Model
 {
-    public interface DomainEntity<ID>
+    public interface Visitable
     {
-        ID getId();
-        void setId(ID id);
-
+        T apply<T>(Visitor<T> visitor); 
     }
 }

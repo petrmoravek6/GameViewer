@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace clientUI.Model
 {
-    public interface DomainEntity<ID>
+    public interface GameModel<ID> : DomainEntity<ID>, Visitable
     {
-        ID getId();
-        void setId(ID id);
-
     }
 }
