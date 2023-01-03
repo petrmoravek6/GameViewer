@@ -15,7 +15,7 @@ namespace clientUI.ServerApi
         protected readonly string basePath;
         protected readonly string parameter;
         protected static readonly HttpClient client = new HttpClient();
-        protected readonly IConverter<TYPE, DTO> converter;
+        public IConverter<TYPE, DTO> converter;
 
         public CrudRequester(string basePath, string parameter, IConverter<TYPE, DTO> converter)
         {

@@ -14,7 +14,7 @@ namespace clientUI.ServerApi
 {
     public class PlayerRequester : CrudRequester<long?, Player, PlayerDto>
     {
-        private readonly TeamConverter teamConverter;
+        public TeamConverter teamConverter;
 
         public PlayerRequester(string basePath, PlayerConverter playerConverter, TeamConverter teamConverter) 
             : base(basePath, "player", playerConverter)

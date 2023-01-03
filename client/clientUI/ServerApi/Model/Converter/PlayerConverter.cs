@@ -9,7 +9,12 @@ namespace clientUI.ServerApi.Model.Converter
 {
     public class PlayerConverter : IConverter<Player, PlayerDto>
     {
-        private TeamRequester teamRequester;
+        private readonly TeamRequester teamRequester;
+
+        public PlayerConverter(TeamRequester teamRequester)
+        {
+            this.teamRequester = teamRequester;
+        }
 
         public PlayerDto ToDto(Player entity)
         {

@@ -11,7 +11,7 @@ namespace clientUI.ServerApi
 {
     public class TeamRequester : CrudRequester<long?, Team, TeamDto>
     {
-        public TeamRequester(string basePath, string parameter, IConverter<Team, TeamDto> converter) : base(basePath, parameter, converter)
+        public TeamRequester(string basePath, TeamConverter converter) : base(basePath, "team", converter)
         {
         }
     }

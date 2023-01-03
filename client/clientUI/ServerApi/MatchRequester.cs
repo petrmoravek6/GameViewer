@@ -12,7 +12,7 @@ namespace clientUI.ServerApi
 {
     public class MatchRequester : CrudRequester<long?, Match, MatchDto>
     {
-        public MatchRequester(string basePath, string parameter, MatchConverter converter) : base(basePath, parameter, converter)
+        public MatchRequester(string basePath, MatchConverter converter) : base(basePath, "match", converter)
         {
         }
     }

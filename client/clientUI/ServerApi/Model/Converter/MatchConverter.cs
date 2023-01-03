@@ -9,8 +9,8 @@ namespace clientUI.ServerApi.Model.Converter
 {
     public class MatchConverter : IConverter<Match, MatchDto>
     {
-        private PlayerRequester playerRequester;
-        private TeamRequester teamRequester;
+        private readonly PlayerRequester playerRequester;
+        private readonly TeamRequester teamRequester;
 
         public MatchConverter(PlayerRequester playerRequester, TeamRequester teamRequester)
         {
