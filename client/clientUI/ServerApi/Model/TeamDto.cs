@@ -14,6 +14,13 @@ namespace clientUI.ServerApi.Model
         public string name;
         public string shortname;
 
+        public TeamDto(long? id, string name, string shortname)
+        {
+            this.id = id;
+            this.name = name;
+            this.shortname = shortname;
+        }
+
         public long? getId()
         {
             return id;

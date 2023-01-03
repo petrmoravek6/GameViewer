@@ -17,7 +17,17 @@ namespace clientUI.ServerApi.Model
         public int yearOfBirth;
         public string position;
         public long team;
-        public List<long> matchesPlayed;
+
+        public PlayerDto(long? id, string name, int dayOfBirth, int monthOfBirth, int yearOfBirth, string position, long team)
+        {
+            this.id = id;
+            this.name = name;
+            this.dayOfBirth = dayOfBirth;
+            this.monthOfBirth = monthOfBirth;
+            this.yearOfBirth = yearOfBirth;
+            this.position = position;
+            this.team = team;
+        }
 
         public long? getId()
         {
