@@ -1,33 +1,31 @@
-﻿using clientUI.Model;
+﻿using clientUI.Forms;
+using clientUI.Model;
 using clientUI.ServerApi.Model;
 using clientUI.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace clientUI.UIContext
 {
     public class MatchContext : GameModelContext<long?, Match, MatchDto>
     {
-        public MatchContext(MatchService service) : base(service)
+        private readonly PlayerService playerService;
+        private readonly TeamService teamService;
+
+        public MatchContext(MatchService service, PlayerService playerService, TeamService teamService) : base(service)
         {
+            this.playerService = playerService;
+            this.teamService = teamService;
         }
 
         public override void CreateEntity()
         {
-            throw new NotImplementedException();
-        }
-
-        public override void DeleteEntity(int idx)
-        {
-            throw new NotImplementedException();
+            var form = new AddMatchForm((MatchService)service, playerService, teamService);
+            form.ShowDialog();
         }
 
         public override void DisplayEntity(int idx)
         {
-            throw new NotImplementedException();
+            var form = new ViewMatchForm((MatchService)service, playerService, teamService, entities[idx]);
+            form.ShowDialog();
         }
     }
 }

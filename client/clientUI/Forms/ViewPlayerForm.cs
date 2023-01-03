@@ -43,7 +43,7 @@ namespace clientUI.Forms
             day.SelectedIndex = player.dateOfBirth.Day - 1;
             month.SelectedIndex = player.dateOfBirth.Month - 1;
             year.Text = player.dateOfBirth.Year.ToString();
-            position.SelectedValue = player.position.ToString();
+            position.SelectedItem = player.position.ToString();
             team.SelectedIndex = allTeams.IndexOf(player.team);
         }
 
@@ -69,7 +69,7 @@ namespace clientUI.Forms
                 var newPlayer = new Player(player.getId(), name_textBox.Text, new DateTime(Int32.Parse(year.Text), Int32.Parse(month.Text), Int32.Parse(day.Text)),
                     (PlayerPosition)Enum.Parse(typeof(PlayerPosition), position.Text), allTeams[team.SelectedIndex]);
                 playerService.Update(newPlayer);
-                logger.Text = "New player added!";
+                logger.Text = "Updated succesfully";
                 save_button.Enabled = false;
                 button1.Enabled = true;
                 name_textBox.Enabled = false;

@@ -34,18 +34,18 @@ namespace clientUI.Services
 
             foreach (Player p in match.participants)
             {
-                if (p.team != match.homeTeam && p.team != match.awayTeam)
+                if (!p.team.Equals(match.homeTeam) && !p.team.Equals(match.awayTeam))
                 {
                     throw new WrongParticipantsException("Some of the match participants are not part of home team nor away team.");
                 }
                 // player's date of birth is higher than date of the match
                 if (p.dateOfBirth > match.dateOfTheMatch)
                 {
-                    throw new WrongParticipantsException("Some of the match participants are born earlier than the date of the match.");
+                    throw new WrongParticipantsException("Some of the match participants are born later than the date of the match.");
 
                 }
                 // age of the player during the match is higher than the limit
-                if ((match.dateOfTheMatch - p.dateOfBirth).TotalDays > AgeLimitYears.ToYears(match.ageLimit))
+                if ((match.dateOfTheMatch - p.dateOfBirth).TotalDays / 365.0 > AgeLimitYears.ToYears(match.ageLimit))
                 {
                     throw new WrongParticipantsException("Some of the match participants are older than the age limit.");
                 }

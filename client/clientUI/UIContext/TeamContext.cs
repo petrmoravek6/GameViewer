@@ -2,11 +2,6 @@
 using clientUI.Model;
 using clientUI.ServerApi.Model;
 using clientUI.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace clientUI.UIContext
 {
@@ -20,11 +15,6 @@ namespace clientUI.UIContext
         {
             var form = new AddTeamForm((TeamService)service);
             form.ShowDialog();
-        }
-
-        public override void DeleteEntity(int idx)
-        {
-           ((TeamService)service).Delete(entities[idx]);
         }
 
         public override void DisplayEntity(int idx)

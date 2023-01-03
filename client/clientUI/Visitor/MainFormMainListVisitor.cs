@@ -16,7 +16,7 @@ namespace clientUI.Visitor
 
         public string VisitPlayer(Player player)
         {
-            return $"{player.name}  {player.team.name}";
+            return $"{player.name}  ({player.team.name})    {player.dateOfBirth.Day}/{player.dateOfBirth.Month}/{player.dateOfBirth.Year}";
         }
 
         public string VisitTeam(Team team)

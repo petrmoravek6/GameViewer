@@ -28,7 +28,7 @@ namespace clientUI.ServerApi.Model.Converter
         public Match ToEntity(MatchDto dto)
         {
             List<Player> participants = new();
-            dto.participants.ForEach(id => playerRequester.Get(id));
+            dto.participants.ForEach(id => participants.Add(playerRequester.Get(id)));
             Team homeTeam = teamRequester.Get(dto.homeTeam);
             Team awayTeam = teamRequester.Get(dto.awayTeam);
             return new Match(dto.getId(), dto.homeTeamScore, dto.awayTeamScore, (AgeLimit)Enum.Parse(typeof(AgeLimit), dto.ageLimit), 

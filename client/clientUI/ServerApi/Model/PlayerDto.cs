@@ -17,6 +17,9 @@ namespace clientUI.ServerApi.Model
         public int yearOfBirth;
         public string position;
         public long team;
+        // dummy, just for JSON parsing
+        [JsonProperty]
+        private List<long> matchesPlayed;
 
         public PlayerDto(long? id, string name, int dayOfBirth, int monthOfBirth, int yearOfBirth, string position, long team)
         {
@@ -27,6 +30,7 @@ namespace clientUI.ServerApi.Model
             this.yearOfBirth = yearOfBirth;
             this.position = position;
             this.team = team;
+            this.matchesPlayed = new();
         }
 
         public long? getId()

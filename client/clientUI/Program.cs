@@ -2,6 +2,7 @@ using clientUI.Model;
 using clientUI.ServerApi;
 using clientUI.ServerApi.Model.Converter;
 using clientUI.Services;
+using clientUI.UIContext;
 
 namespace clientUI;
 
@@ -34,11 +35,12 @@ static class Program
 
         TeamService teamService = new(teamRequester);
         PlayerService playerService = new(playerRequester);
-        MatchService matchService= new(matchRequester);
+        MatchService matchService = new(matchRequester);
 
-        teamService.Create(new Team(null, "asd", "as"));
-        var x = teamService.ReadAll();
+        TeamContext teamContext = new(teamService);
+        PlayerContext playerContext = new(playerService, teamService);
+        MatchContext matchContext = new(matchService, playerService, teamService);
 
-        Application.Run(new MainForm());
+        Application.Run(new MainForm(teamContext, playerContext, matchContext));
     }
 }

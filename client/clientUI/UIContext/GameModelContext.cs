@@ -24,7 +24,15 @@ namespace clientUI.UIContext
         }
 
         public abstract void CreateEntity();
-        public abstract void DeleteEntity(int idx);
+
+        /// <summary>
+        /// Throws exception if anything goes wrong during http request
+        /// </summary>
+        /// <param name="idx"></param>
+        public void DeleteEntity(int idx)
+        {
+            service.Delete(entities[idx]);
+        }
         public abstract void DisplayEntity(int idx);
 
         public List<string> ReloadAndGetMainList()

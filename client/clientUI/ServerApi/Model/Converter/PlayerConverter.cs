@@ -25,7 +25,7 @@ namespace clientUI.ServerApi.Model.Converter
         public Player ToEntity(PlayerDto dto)
         {
             return new Player(dto.getId(), dto.name, new DateTime(dto.yearOfBirth, dto.monthOfBirth, dto.dayOfBirth),
-                (PlayerPosition)Enum.Parse(typeof(PlayerPosition), dto.position), teamRequester.Get(dto.getId()));
+                (PlayerPosition)Enum.Parse(typeof(PlayerPosition), dto.position), teamRequester.Get(dto.team));
         }
     }
 }
