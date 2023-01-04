@@ -5,6 +5,7 @@ import cz.cvut.fit.game_viewer.api.model.TeamDto;
 import cz.cvut.fit.game_viewer.api.model.converter.PlayerToDtoConverter;
 import cz.cvut.fit.game_viewer.api.model.converter.PlayerToEntityConverter;
 import cz.cvut.fit.game_viewer.api.model.converter.TeamToDtoConverter;
+import cz.cvut.fit.game_viewer.api.model.valid_dto.PlayerDtoCheck;
 import cz.cvut.fit.game_viewer.business.PlayerService;
 import cz.cvut.fit.game_viewer.domain.player.Player;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,9 @@ public class PlayerController extends AbstractCrudController<Player, PlayerDto, 
 
   private final TeamToDtoConverter teamToDtoConverter;
 
-  public PlayerController(PlayerService service, PlayerToDtoConverter toDtoConverter, PlayerToEntityConverter toEntityConverter, TeamToDtoConverter teamToDtoConverter) {
-    super(service, toDtoConverter, toEntityConverter);
+  public PlayerController(PlayerService service, PlayerToDtoConverter toDtoConverter, PlayerToEntityConverter toEntityConverter,
+                          TeamToDtoConverter teamToDtoConverter, PlayerDtoCheck playerDtoCheck) {
+    super(service, toDtoConverter, toEntityConverter, playerDtoCheck);
     this.teamToDtoConverter = teamToDtoConverter;
   }
 

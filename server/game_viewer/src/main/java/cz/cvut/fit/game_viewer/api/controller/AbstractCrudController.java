@@ -15,17 +15,21 @@ public abstract class AbstractCrudController<Ent extends DomainEntity<ID>, Dto e
     protected AbstractCrudService<Ent, ID> service;
     protected Function<Ent, Dto> toDtoConverter;
     protected Function<Dto, Ent> toEntityConverter;
+    protected Function<Dto, Boolean> receivedDtoIsCorrect;
 
-    public AbstractCrudController(AbstractCrudService<Ent, ID> service, Function<Ent, Dto> toDtoConverter, Function<Dto, Ent> toEntityConverter) {
+    public AbstractCrudController(AbstractCrudService<Ent, ID> service, Function<Ent, Dto> toDtoConverter, Function<Dto, Ent> toEntityConverter, Function<Dto, Boolean> dtoCheck) {
         this.service = service;
         this.toDtoConverter = toDtoConverter;
         this.toEntityConverter = toEntityConverter;
+        this.receivedDtoIsCorrect = dtoCheck;
     }
 
 
     @PostMapping
     public ResponseEntity<Dto> create(@RequestBody Dto e) {
         try {
+            if (!receivedDtoIsCorrect.apply(e))
+                return ResponseEntity.badRequest().build();
             return ResponseEntity.ok(toDtoConverter.apply(service.create(toEntityConverter.apply(e))));
         }
         // entity with given id already exists
@@ -52,6 +56,8 @@ public abstract class AbstractCrudController<Ent extends DomainEntity<ID>, Dto e
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody Dto e, @PathVariable ID id) {
+        if (!receivedDtoIsCorrect.apply(e))
+            return ResponseEntity.badRequest().build();
         // first we set entity's ID to ID that is represented as parameter in http request
         e.setId(id);
         try {

@@ -24,7 +24,9 @@ public class MatchToEntityConverter implements Function<MatchDto, Match> {
   @Override
   public Match apply(MatchDto matchDto) {
     var players = new ArrayList<Player>();
-    playerRepository.findAllById(matchDto.getParticipants()).forEach(players::add);
+    if (matchDto.getParticipants() != null) {
+      playerRepository.findAllById(matchDto.getParticipants()).forEach(players::add);
+    }
     return new Match(matchDto.getId(), matchDto.getHomeTeamScore(), matchDto.getAwayTeamScore(), AgeLimit.valueOf(matchDto.getAgeLimit()),
             LocalDate.of(matchDto.getYear(), matchDto.getMonth(), matchDto.getDay()), teamRepository.findById(matchDto.getHomeTeam()).get(),
             teamRepository.findById(matchDto.getAwayTeam()).get(), players);
