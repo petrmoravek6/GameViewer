@@ -106,5 +106,20 @@ namespace clientUI.Forms
             position.Enabled = true;
             team.Enabled = true;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Team> teams = playerService.ReadAllTeamsPlayerWonAgainst(player);
+                var textVisitor = new MainFormMainListVisitor();
+                teamsWon.DataSource = teams.Select(t => t.apply(textVisitor)).ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.Text = ex.Message;
+            }
+            
+        }
     }
 }

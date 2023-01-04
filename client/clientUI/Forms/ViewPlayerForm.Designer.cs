@@ -42,6 +42,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.team = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.teamsWon = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // name_textBox
@@ -78,7 +80,8 @@
             // 
             // save_button
             // 
-            this.save_button.Location = new System.Drawing.Point(150, 255);
+            this.save_button.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.save_button.Location = new System.Drawing.Point(179, 254);
             this.save_button.Name = "save_button";
             this.save_button.Size = new System.Drawing.Size(75, 23);
             this.save_button.TabIndex = 5;
@@ -88,7 +91,8 @@
             // 
             // exit_button
             // 
-            this.exit_button.Location = new System.Drawing.Point(242, 255);
+            this.exit_button.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.exit_button.Location = new System.Drawing.Point(271, 254);
             this.exit_button.Name = "exit_button";
             this.exit_button.Size = new System.Drawing.Size(75, 23);
             this.exit_button.TabIndex = 6;
@@ -100,9 +104,9 @@
             // 
             this.logger.ForeColor = System.Drawing.Color.Red;
             this.logger.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.logger.Location = new System.Drawing.Point(12, 302);
+            this.logger.Location = new System.Drawing.Point(12, 291);
             this.logger.Name = "logger";
-            this.logger.Size = new System.Drawing.Size(427, 25);
+            this.logger.Size = new System.Drawing.Size(486, 25);
             this.logger.TabIndex = 7;
             this.logger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -217,7 +221,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(150, 226);
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(179, 225);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 23);
             this.button1.TabIndex = 14;
@@ -225,12 +230,33 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // teamsWon
+            // 
+            this.teamsWon.FormattingEnabled = true;
+            this.teamsWon.ItemHeight = 15;
+            this.teamsWon.Location = new System.Drawing.Point(149, 371);
+            this.teamsWon.Name = "teamsWon";
+            this.teamsWon.Size = new System.Drawing.Size(228, 184);
+            this.teamsWon.TabIndex = 15;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(149, 340);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(228, 23);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "View teams that the player won against";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // ViewPlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(451, 336);
+            this.ClientSize = new System.Drawing.Size(510, 578);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.teamsWon);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.team);
             this.Controls.Add(this.label4);
@@ -269,5 +295,7 @@
         private Label label4;
         private ComboBox team;
         private Button button1;
+        private ListBox teamsWon;
+        private Button button2;
     }
 }
