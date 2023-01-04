@@ -1,4 +1,4 @@
-# TJV SEMESTRAL WORK
+# GAME VIEWER SERVER
 
 Database with simple UI for CRUD operations of all enitites shown in the data diagram png.
 
