@@ -1,6 +1,11 @@
 # GAME VIEWER SERVER
 
-Database with simple UI for CRUD operations of all enitites shown in the data diagram png.
+This is a server of Game Viewer application. 
+### Configuration
+For server ip/port configuration, see application.properties in *src/main*. For Postgress port configuration, see *docker.compose* file. NOTE: Autonomous testing uses in-memory database (see *src/test/application.properties).
+### Run
+Use **gradle bootBuildImage** command inside the server root folder which builds a Docker image containing both the server and Postgres DB. After that, use **docker compose up** command to run the image.<br /><br />
+Default server port: 8080
 
 ## 1st control point
 _Data diagram_ = diagram.png<br /><br />
