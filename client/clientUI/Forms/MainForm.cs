@@ -4,6 +4,7 @@ using clientUI.ServerApi;
 using clientUI.Services;
 using clientUI.UIContext;
 using clientUI.Visitor;
+using System.Net.Sockets;
 
 public partial class MainForm : Form
 {
@@ -20,7 +21,14 @@ public partial class MainForm : Form
         currentContext = teamContext;
         
         InitializeComponent();
-        mainList.DataSource = currentContext.ReloadAndGetMainList();
+        try
+        {
+            mainList.DataSource = currentContext.ReloadAndGetMainList();
+        }
+        catch(Exception ex)
+        {
+            logger.Text = ex.Message;
+        }
     }
 
     private void exit_button_Click(object sender, EventArgs e)
@@ -30,21 +38,44 @@ public partial class MainForm : Form
 
     private void team_button_Click(object sender, EventArgs e)
     {
-        currentContext = teamContext;
-        mainList.DataSource = currentContext.ReloadAndGetMainList();
-        
+        try
+        {
+            currentContext = teamContext;
+            mainList.DataSource = currentContext.ReloadAndGetMainList();
+            logger.Text = "";
+        }
+        catch (Exception ex)
+        {
+            logger.Text = ex.Message;
+        }
     }
 
     private void player_button_Click(object sender, EventArgs e)
     {
-        currentContext = playerContext;
-        mainList.DataSource = currentContext.ReloadAndGetMainList();
+        try
+        {
+            currentContext = playerContext;
+            mainList.DataSource = currentContext.ReloadAndGetMainList();
+            logger.Text = "";
+        }
+        catch (Exception ex)
+        {
+            logger.Text = ex.Message;
+        }
     }
 
     private void match_button_Click(object sender, EventArgs e)
     {
-        currentContext = matchContext;
-        mainList.DataSource = currentContext.ReloadAndGetMainList();
+        try
+        {
+            currentContext = matchContext;
+            mainList.DataSource = currentContext.ReloadAndGetMainList();
+            logger.Text = "";
+        }
+        catch(Exception ex)
+        {
+            logger.Text = ex.Message;
+        }
     }
 
     private void display_button_Click(object sender, EventArgs e)
@@ -54,9 +85,17 @@ public partial class MainForm : Form
             logger.Text = "No item selected";
             return;
         }
-        currentContext.DisplayEntity(mainList.SelectedIndex);
-        mainList.DataSource = currentContext.ReloadAndGetMainList();
-        logger.Text = "";
+        
+        try
+        {
+            currentContext.DisplayEntity(mainList.SelectedIndex);
+            mainList.DataSource = currentContext.ReloadAndGetMainList();
+            logger.Text = "";
+        }
+        catch (Exception ex)
+        {
+            logger.Text = ex.Message;
+        }
     }
 
     private void remove_button_Click(object sender, EventArgs e)
@@ -81,8 +120,15 @@ public partial class MainForm : Form
 
     private void add_button_Click(object sender, EventArgs e)
     {
-        currentContext.CreateEntity();
-        mainList.DataSource = currentContext.ReloadAndGetMainList();
-        logger.Text = "";
+        try
+        {
+            currentContext.CreateEntity();
+            mainList.DataSource = currentContext.ReloadAndGetMainList();
+            logger.Text = "Item was updated successfully";
+        }
+        catch (Exception ex)
+        {
+            logger.Text = ex.Message;
+        }
     }
 }

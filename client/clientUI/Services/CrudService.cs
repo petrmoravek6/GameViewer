@@ -29,7 +29,7 @@ namespace clientUI.Services
             }
             catch(Exception ex)
             {
-                if (ex is TaskCanceledException || ex is HttpRequestException)
+                if (ex is TaskCanceledException || ex is HttpRequestException || ex is AggregateException)
                 {
                     throw new Exception("Connection to server failed. Please check internet connection.");
                 }
@@ -45,7 +45,7 @@ namespace clientUI.Services
             }
             catch (Exception ex)
             {
-                if (ex is TaskCanceledException || ex is HttpRequestException)
+                if (ex is TaskCanceledException || ex is HttpRequestException || ex is AggregateException)
                 {
                     throw new Exception("Connection to server failed. Please check internet connection.");
                 }
@@ -61,7 +61,7 @@ namespace clientUI.Services
             }
             catch (Exception ex)
             {
-                if (ex is TaskCanceledException || ex is HttpRequestException)
+                if (ex is TaskCanceledException || ex is HttpRequestException || ex is AggregateException)
                 {
                     throw new Exception("Connection to server failed. Please check internet connection.");
                 }
@@ -77,7 +77,7 @@ namespace clientUI.Services
             }
             catch (Exception ex)
             {
-                if (ex is TaskCanceledException || ex is HttpRequestException)
+                if (ex is TaskCanceledException || ex is HttpRequestException || ex is AggregateException)
                 {
                     throw new Exception("Connection to server failed. Please check internet connection.");
                 }
@@ -93,7 +93,7 @@ namespace clientUI.Services
             }
             catch (Exception ex)
             {
-                if (ex is TaskCanceledException || ex is HttpRequestException)
+                if (ex is TaskCanceledException || ex is HttpRequestException || ex is AggregateException)
                 {
                     throw new Exception("Connection to server failed. Please check internet connection.");
                 }
