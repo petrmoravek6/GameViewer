@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.title = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.year = new System.Windows.Forms.TextBox();
@@ -49,21 +48,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // title
-            // 
-            this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.title.Location = new System.Drawing.Point(188, 18);
-            this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(285, 32);
-            this.title.TabIndex = 1;
-            this.title.Text = "CREATING NEW MATCH";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(309, 77);
+            this.label2.Location = new System.Drawing.Point(306, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 21);
             this.label2.TabIndex = 2;
@@ -72,7 +61,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(148, 205);
+            this.label3.Location = new System.Drawing.Point(145, 180);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 15);
             this.label3.TabIndex = 3;
@@ -80,7 +69,7 @@
             // 
             // year
             // 
-            this.year.Location = new System.Drawing.Point(332, 197);
+            this.year.Location = new System.Drawing.Point(329, 172);
             this.year.Name = "year";
             this.year.Size = new System.Drawing.Size(93, 23);
             this.year.TabIndex = 4;
@@ -152,7 +141,7 @@
             "29",
             "30",
             "31"});
-            this.day.Location = new System.Drawing.Point(198, 197);
+            this.day.Location = new System.Drawing.Point(195, 172);
             this.day.Name = "day";
             this.day.Size = new System.Drawing.Size(51, 23);
             this.day.TabIndex = 8;
@@ -175,7 +164,7 @@
             "10",
             "11",
             "12"});
-            this.month.Location = new System.Drawing.Point(266, 197);
+            this.month.Location = new System.Drawing.Point(263, 172);
             this.month.Name = "month";
             this.month.Size = new System.Drawing.Size(51, 23);
             this.month.TabIndex = 9;
@@ -183,7 +172,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(102, 243);
+            this.label1.Location = new System.Drawing.Point(99, 218);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 10;
@@ -200,7 +189,7 @@
             "U18",
             "U21",
             "Senior"});
-            this.ageLevel.Location = new System.Drawing.Point(198, 235);
+            this.ageLevel.Location = new System.Drawing.Point(195, 210);
             this.ageLevel.Name = "ageLevel";
             this.ageLevel.Size = new System.Drawing.Size(227, 23);
             this.ageLevel.TabIndex = 11;
@@ -208,7 +197,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(96, 288);
+            this.label4.Location = new System.Drawing.Point(93, 263);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 15);
             this.label4.TabIndex = 12;
@@ -219,7 +208,7 @@
             this.homeTeam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.homeTeam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.homeTeam.FormattingEnabled = true;
-            this.homeTeam.Location = new System.Drawing.Point(84, 79);
+            this.homeTeam.Location = new System.Drawing.Point(81, 54);
             this.homeTeam.Name = "homeTeam";
             this.homeTeam.Size = new System.Drawing.Size(171, 23);
             this.homeTeam.TabIndex = 14;
@@ -229,7 +218,7 @@
             this.awayTeam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.awayTeam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.awayTeam.FormattingEnabled = true;
-            this.awayTeam.Location = new System.Drawing.Point(389, 79);
+            this.awayTeam.Location = new System.Drawing.Point(386, 54);
             this.awayTeam.Name = "awayTeam";
             this.awayTeam.Size = new System.Drawing.Size(171, 23);
             this.awayTeam.TabIndex = 15;
@@ -237,24 +226,26 @@
             // homeTeamScore
             // 
             this.homeTeamScore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.homeTeamScore.Location = new System.Drawing.Point(266, 137);
+            this.homeTeamScore.Location = new System.Drawing.Point(263, 112);
             this.homeTeamScore.Name = "homeTeamScore";
             this.homeTeamScore.Size = new System.Drawing.Size(41, 27);
             this.homeTeamScore.TabIndex = 16;
+            this.homeTeamScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // awayTeamScore
             // 
             this.awayTeamScore.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.awayTeamScore.Location = new System.Drawing.Point(335, 137);
+            this.awayTeamScore.Location = new System.Drawing.Point(332, 112);
             this.awayTeamScore.Name = "awayTeamScore";
             this.awayTeamScore.Size = new System.Drawing.Size(41, 27);
             this.awayTeamScore.TabIndex = 17;
+            this.awayTeamScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(317, 140);
+            this.label5.Location = new System.Drawing.Point(314, 115);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(12, 20);
             this.label5.TabIndex = 18;
@@ -263,7 +254,7 @@
             // participants
             // 
             this.participants.FormattingEnabled = true;
-            this.participants.Location = new System.Drawing.Point(160, 288);
+            this.participants.Location = new System.Drawing.Point(157, 263);
             this.participants.Name = "participants";
             this.participants.Size = new System.Drawing.Size(325, 292);
             this.participants.TabIndex = 19;
@@ -302,17 +293,15 @@
             this.Controls.Add(this.year);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.title);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "ViewMatchForm";
-            this.Text = "Add new match";
+            this.Text = "Match information";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Label title;
         private Label label2;
         private Label label3;
         private TextBox year;

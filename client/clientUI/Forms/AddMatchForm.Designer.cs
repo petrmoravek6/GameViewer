@@ -240,6 +240,7 @@
             this.homeTeamScore.Name = "homeTeamScore";
             this.homeTeamScore.Size = new System.Drawing.Size(41, 27);
             this.homeTeamScore.TabIndex = 16;
+            this.homeTeamScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // awayTeamScore
             // 
@@ -248,6 +249,7 @@
             this.awayTeamScore.Name = "awayTeamScore";
             this.awayTeamScore.Size = new System.Drawing.Size(41, 27);
             this.awayTeamScore.TabIndex = 17;
+            this.awayTeamScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 

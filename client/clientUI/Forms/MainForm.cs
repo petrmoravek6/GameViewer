@@ -124,7 +124,7 @@ public partial class MainForm : Form
         {
             currentContext.CreateEntity();
             mainList.DataSource = currentContext.ReloadAndGetMainList();
-            logger.Text = "Item was updated successfully";
+            logger.Text = "Item was created successfully";
         }
         catch (Exception ex)
         {
