@@ -31,6 +31,13 @@ namespace clientUI.ServerApi
             return dtoList.Select(dto => converter.ToEntity(dto)).ToList();
         }
 
+        public async Task<List<TYPE>> GetAllAsync()
+        {
+            var responseString = await client.GetStringAsync($"{basePath}/{parameter}");
+            var dtoList = JsonConvert.DeserializeObject<List<DTO>>(responseString);
+            return dtoList.Select(dto => converter.ToEntity(dto)).ToList();
+        }
+
         public TYPE Get(ID id)
         {
             if (id is null)

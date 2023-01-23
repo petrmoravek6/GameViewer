@@ -53,6 +53,22 @@ namespace clientUI.Services
             }
         }
 
+        public async Task<List<TYPE>> ReadAllAsync()
+        {
+            try
+            {
+                return await requester.GetAllAsync();
+            }
+            catch (Exception ex)
+            {
+                if (ex is TaskCanceledException || ex is HttpRequestException || ex is AggregateException)
+                {
+                    throw new Exception("Connection to server failed. Please check internet connection.");
+                }
+                throw;
+            }
+        }
+
         public virtual TYPE Create(TYPE entity)
         {
             try

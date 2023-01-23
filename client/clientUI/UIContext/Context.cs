@@ -11,6 +11,8 @@ namespace clientUI.UIContext
     {
         public List<string> ReloadAndGetMainList();
 
+        public Task<List<string>> ReloadAndGetMainListAsync();
+
         public void CreateEntity();
         public void DisplayEntity(int idx);
         public void DeleteEntity(int idx);

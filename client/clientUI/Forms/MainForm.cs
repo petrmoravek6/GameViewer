@@ -5,6 +5,7 @@ using clientUI.Services;
 using clientUI.UIContext;
 using clientUI.Visitor;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 
 public partial class MainForm : Form
 {
@@ -36,13 +37,19 @@ public partial class MainForm : Form
         Close();
     }
 
-    private void team_button_Click(object sender, EventArgs e)
+    private async Task setContext(Context newContext)
+    {
+        logger.Text = "Loading...";
+        mainList.DataSource = await newContext.ReloadAndGetMainListAsync();
+        currentContext = newContext;
+        logger.Text = "";
+    }
+
+    private async void team_button_Click(object sender, EventArgs e)
     {
         try
         {
-            currentContext = teamContext;
-            mainList.DataSource = currentContext.ReloadAndGetMainList();
-            logger.Text = "";
+            await setContext(teamContext);
         }
         catch (Exception ex)
         {
@@ -50,13 +57,11 @@ public partial class MainForm : Form
         }
     }
 
-    private void player_button_Click(object sender, EventArgs e)
+    private async void player_button_ClickAsync(object sender, EventArgs e)
     {
         try
         {
-            currentContext = playerContext;
-            mainList.DataSource = currentContext.ReloadAndGetMainList();
-            logger.Text = "";
+            await setContext(playerContext);
         }
         catch (Exception ex)
         {
@@ -64,13 +69,11 @@ public partial class MainForm : Form
         }
     }
 
-    private void match_button_Click(object sender, EventArgs e)
+    private async void match_button_Click(object sender, EventArgs e)
     {
         try
         {
-            currentContext = matchContext;
-            mainList.DataSource = currentContext.ReloadAndGetMainList();
-            logger.Text = "";
+            await setContext(matchContext);
         }
         catch(Exception ex)
         {
@@ -78,7 +81,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void display_button_Click(object sender, EventArgs e)
+    private async void display_button_Click(object sender, EventArgs e)
     {
         if (mainList.SelectedIndex == -1)
         {
@@ -89,8 +92,8 @@ public partial class MainForm : Form
         try
         {
             currentContext.DisplayEntity(mainList.SelectedIndex);
-            mainList.DataSource = currentContext.ReloadAndGetMainList();
             logger.Text = "";
+            mainList.DataSource = await currentContext.ReloadAndGetMainListAsync();
         }
         catch (Exception ex)
         {
@@ -98,7 +101,7 @@ public partial class MainForm : Form
         }
     }
 
-    private void remove_button_Click(object sender, EventArgs e)
+    private async void remove_button_Click(object sender, EventArgs e)
     {
         if (mainList.SelectedIndex == -1)
         {
@@ -108,9 +111,10 @@ public partial class MainForm : Form
         try
         {
             currentContext.DeleteEntity(mainList.SelectedIndex);
-            Thread.Sleep(500);
-            mainList.DataSource = currentContext.ReloadAndGetMainList();
             logger.Text = "Item was deleted successfully";
+            // asychronous delaying for waiting for server update after removing
+            await Task.Delay(500);
+            mainList.DataSource = await currentContext.ReloadAndGetMainListAsync();
         }
         catch (Exception ex)
         {
@@ -118,13 +122,13 @@ public partial class MainForm : Form
         }
     }
 
-    private void add_button_Click(object sender, EventArgs e)
+    private async void add_button_Click(object sender, EventArgs e)
     {
         try
         {
             currentContext.CreateEntity();
-            mainList.DataSource = currentContext.ReloadAndGetMainList();
             logger.Text = "Item was created successfully";
+            mainList.DataSource = await currentContext.ReloadAndGetMainListAsync();
         }
         catch (Exception ex)
         {

@@ -62,7 +62,7 @@ partial class MainForm
             this.player_button.TabIndex = 1;
             this.player_button.Text = "PLAYERS";
             this.player_button.UseVisualStyleBackColor = false;
-            this.player_button.Click += new System.EventHandler(this.player_button_Click);
+            this.player_button.Click += new System.EventHandler(this.player_button_ClickAsync);
             // 
             // match_button
             // 

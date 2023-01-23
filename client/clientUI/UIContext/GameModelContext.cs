@@ -25,10 +25,6 @@ namespace clientUI.UIContext
 
         public abstract void CreateEntity();
 
-        /// <summary>
-        /// Throws exception if anything goes wrong during http request
-        /// </summary>
-        /// <param name="idx"></param>
         public void DeleteEntity(int idx)
         {
             service.Delete(entities[idx]);
@@ -38,6 +34,12 @@ namespace clientUI.UIContext
         public List<string> ReloadAndGetMainList()
         {
             entities = service.ReadAll();
+            return entities.Select(e => e.apply(mainListVisitor)).ToList();
+        }
+
+        public async Task<List<string>> ReloadAndGetMainListAsync()
+        {
+            entities = await service.ReadAllAsync();
             return entities.Select(e => e.apply(mainListVisitor)).ToList();
         }
     }

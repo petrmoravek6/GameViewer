@@ -12,6 +12,7 @@ namespace clientUI;
 
 static class Program
 {
+    public static IServiceProvider ServiceProvider { get; private set; }
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
@@ -24,31 +25,31 @@ static class Program
 
         string baseApiAddress = @"http://localhost:8080";
 
-       //var host = Host.CreateDefaultBuilder()
-       //    .ConfigureServices((provider, services) =>
-       //    {
-       //        services.AddSingleton<TeamConverter>();
-       //        services.AddSingleton<TeamRequester>(provider => new TeamRequester(baseApiAddress, provider.GetService<TeamConverter>()!));
-       //        services.AddSingleton<PlayerRequester>(provider => new PlayerRequester(baseApiAddress, null, provider.GetService<TeamConverter>()!));
-       //        services.AddSingleton<MatchRequester>(provider => new MatchRequester(baseApiAddress, null));
-       //        services.AddSingleton<MatchConverter>();
-       //        services.AddSingleton<PlayerConverter>();
-       //
-       //        services.AddSingleton<TeamService>();
-       //        services.AddSingleton<PlayerService>();
-       //        services.AddSingleton<MatchService>();
-       //
-       //        services.AddSingleton<TeamContext>();
-       //        services.AddSingleton<PlayerContext>();
-       //        services.AddSingleton<MatchContext>();
-       //
-       //        services.AddSingleton<MainForm>();
-       //    })
-       //    .Build();
-       //
-       //var m = ServiceProvider.GetRequiredService<MainForm>();
-       //
-       //Application.Run(ServiceProvider.GetRequiredService<MainForm>());
+       var host = Host.CreateDefaultBuilder()
+           .ConfigureServices((provider, services) =>
+           {
+               services.AddSingleton<TeamConverter>();
+               services.AddSingleton<TeamRequester>(provider => new TeamRequester(baseApiAddress, provider.GetService<TeamConverter>()!));
+               services.AddSingleton<PlayerRequester>(provider => new PlayerRequester(baseApiAddress, provider.GetService<PlayerConverter>()!, provider.GetService<TeamConverter>()!));
+               services.AddSingleton<MatchRequester>(provider => new MatchRequester(baseApiAddress, provider.GetService<MatchConverter>()!));
+               services.AddSingleton<MatchConverter>();
+               services.AddSingleton<PlayerConverter>();
+       
+               services.AddSingleton<TeamService>();
+               services.AddSingleton<PlayerService>();
+               services.AddSingleton<MatchService>();
+       
+               services.AddSingleton<TeamContext>();
+               services.AddSingleton<PlayerContext>();
+               services.AddSingleton<MatchContext>();
+       
+               services.AddSingleton<MainForm>();
+           })
+           .Build();
+
+        ServiceProvider = host.Services;
+
+        Application.Run(ServiceProvider.GetRequiredService<MainForm>());
 
        
 
@@ -56,27 +57,27 @@ static class Program
 
         
 
-       TeamConverter teamConverter = new TeamConverter();
+       //TeamConverter teamConverter = new TeamConverter();
+       //
+       //TeamRequester teamRequester = new(baseApiAddress, teamConverter);
+       //PlayerRequester playerRequester = new(baseApiAddress, null, teamConverter);
+       //MatchRequester matchRequester = new(baseApiAddress, null);
+       //
+       //MatchConverter matchConverter = new MatchConverter(playerRequester, teamRequester);
+       //PlayerConverter playerConverter = new PlayerConverter(teamRequester);
+       //
+       //// setting cycle references
+       //playerRequester.converter = playerConverter;
+       //matchRequester.converter = matchConverter;
+       //
+       //TeamService teamService = new(teamRequester);
+       //PlayerService playerService = new(playerRequester);
+       //MatchService matchService = new(matchRequester);
+       //
+       //TeamContext teamContext = new(teamService);
+       //PlayerContext playerContext = new(playerService, teamService);
+       //MatchContext matchContext = new(matchService, playerService, teamService);
        
-       TeamRequester teamRequester = new(baseApiAddress, teamConverter);
-       PlayerRequester playerRequester = new(baseApiAddress, null, teamConverter);
-       MatchRequester matchRequester = new(baseApiAddress, null);
-       
-       MatchConverter matchConverter = new MatchConverter(playerRequester, teamRequester);
-       PlayerConverter playerConverter = new PlayerConverter(teamRequester);
-       
-       // setting cycle references
-       playerRequester.converter = playerConverter;
-       matchRequester.converter = matchConverter;
-       
-       TeamService teamService = new(teamRequester);
-       PlayerService playerService = new(playerRequester);
-       MatchService matchService = new(matchRequester);
-       
-       TeamContext teamContext = new(teamService);
-       PlayerContext playerContext = new(playerService, teamService);
-       MatchContext matchContext = new(matchService, playerService, teamService);
-       
-       Application.Run(new MainForm(teamContext, playerContext, matchContext));
+       //Application.Run(new MainForm(teamContext, playerContext, matchContext));
     }
 }
