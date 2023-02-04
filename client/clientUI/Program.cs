@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.ComponentModel.Design;
 using System.IO;
+using System.Diagnostics;
 
 namespace clientUI;
 
@@ -23,9 +24,20 @@ static class Program
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
 
+        // trace configuration
+        string fileLogPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "Coding", "tjv", "client", "logger.txt");
+        try
+        {
+            TextWriterTraceListener logFile = new(File.CreateText(fileLogPath));
+            Trace.Listeners.Add(logFile);
+        }
+        catch(Exception) { }
+        Trace.AutoFlush = true;
+
         string baseApiAddress = @"http://localhost:8080";
 
-       var host = Host.CreateDefaultBuilder()
+        Trace.WriteLine("Configuring DI");
+        var host = Host.CreateDefaultBuilder()
            .ConfigureServices((provider, services) =>
            {
                services.AddSingleton<TeamConverter>();
@@ -47,37 +59,13 @@ static class Program
            })
            .Build();
 
+        Trace.WriteLine("DI was configured successfully");
         ServiceProvider = host.Services;
 
+        ServiceProvider.GetService<MainForm>()!.TeamClicked += (_, args) => { Trace.WriteLine($"{args.TeamClickedCnt}x clicked on TEAM button"); };
+
+        Trace.WriteLine("Starting application");
+
         Application.Run(ServiceProvider.GetRequiredService<MainForm>());
-
-       
-
-
-
-        
-
-       //TeamConverter teamConverter = new TeamConverter();
-       //
-       //TeamRequester teamRequester = new(baseApiAddress, teamConverter);
-       //PlayerRequester playerRequester = new(baseApiAddress, null, teamConverter);
-       //MatchRequester matchRequester = new(baseApiAddress, null);
-       //
-       //MatchConverter matchConverter = new MatchConverter(playerRequester, teamRequester);
-       //PlayerConverter playerConverter = new PlayerConverter(teamRequester);
-       //
-       //// setting cycle references
-       //playerRequester.converter = playerConverter;
-       //matchRequester.converter = matchConverter;
-       //
-       //TeamService teamService = new(teamRequester);
-       //PlayerService playerService = new(playerRequester);
-       //MatchService matchService = new(matchRequester);
-       //
-       //TeamContext teamContext = new(teamService);
-       //PlayerContext playerContext = new(playerService, teamService);
-       //MatchContext matchContext = new(matchService, playerService, teamService);
-       
-       //Application.Run(new MainForm(teamContext, playerContext, matchContext));
     }
 }

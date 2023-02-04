@@ -4,8 +4,19 @@ using clientUI.ServerApi;
 using clientUI.Services;
 using clientUI.UIContext;
 using clientUI.Visitor;
+using System.Diagnostics;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+
+public class MainFormArgs : EventArgs
+{
+    public readonly uint TeamClickedCnt;
+
+    public MainFormArgs(uint teamClickedCnt)
+    {
+        TeamClickedCnt = teamClickedCnt;
+    }
+}
 
 public partial class MainForm : Form
 {
@@ -13,6 +24,8 @@ public partial class MainForm : Form
     private readonly MatchContext matchContext;
     private readonly PlayerContext playerContext;
     private readonly TeamContext teamContext;
+    private uint teamClickedCnt = 0;
+    public event EventHandler<MainFormArgs> TeamClicked;
     public MainForm(TeamContext teamContext, PlayerContext playerContext, MatchContext matchContext)
     {
         this.teamContext = teamContext;
@@ -24,10 +37,12 @@ public partial class MainForm : Form
         InitializeComponent();
         try
         {
+            Trace.WriteLine("Trying to reload context");
             mainList.DataSource = currentContext.ReloadAndGetMainList();
         }
         catch(Exception ex)
         {
+            Trace.WriteLine($"Exception during reloading context. Ex.Msg: {ex.Message}");
             logger.Text = ex.Message;
         }
     }
@@ -54,6 +69,10 @@ public partial class MainForm : Form
         catch (Exception ex)
         {
             logger.Text = ex.Message;
+        }
+        if (++teamClickedCnt > 3)
+        {
+            TeamClicked(this, new MainFormArgs(teamClickedCnt));
         }
     }
 
