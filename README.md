@@ -1,7 +1,7 @@
 # TJV
 
 Repository of the semestral project of BI-TJV subject.
-The subject is specialized for teaching the basis of Server x Client architecture. 
+The subject is specialized on teaching the basis of Server x Client architecture. 
 
 The application is called **Game Viewer** and servers as some kind of a football database, where users can display players, teams or games data, add new entites or update them. In the future it could be extended by statistics of the games or the players. Real life example can be www.livesport.com.
 
