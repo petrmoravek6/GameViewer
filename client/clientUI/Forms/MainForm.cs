@@ -1,22 +1,8 @@
 namespace clientUI;
 
-using clientUI.ServerApi;
-using clientUI.Services;
 using clientUI.UIContext;
-using clientUI.Visitor;
 using System.Diagnostics;
-using System.Net.Sockets;
 using System.Threading.Tasks;
-
-public class MainFormArgs : EventArgs
-{
-    public readonly uint TeamClickedCnt;
-
-    public MainFormArgs(uint teamClickedCnt)
-    {
-        TeamClickedCnt = teamClickedCnt;
-    }
-}
 
 public partial class MainForm : Form
 {
